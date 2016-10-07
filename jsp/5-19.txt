@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>在线购书系统-处理登录的界面</title>
+</head>
+
+<body bgcolor="CCCFFF">
+ <jsp:useBean id="user" scope="page" class="bookShop.UserInfoBean"/>
+ <jsp:setProperty name="user" property="*"/>
+ <%
+   if(user.getUserName()==null||user.getPassword()==null){
+   %>
+   <jsp:forward page="bookShopLogin.jsp"/>
+   <%
+   }
+   if(user.getUserName().equals("QQ")){
+     if(user.getPassword().equals("123")){
+   %>
+      <jsp:forward page="bookShop.jsp">
+        <jsp:param name="userName" value="<%=user.getUserName()%>"/>
+        </jsp:forward>
+    <%
+    }else{
+    %>
+     <jsp:forward page="bookShopLogin.jsp"/>
+     <%
+   }
+   }else{
+   %>
+     <jsp:forward page="bookShopLogin.jsp"/>
+     <%
+     }
+     %>
+</body>
+</html>
