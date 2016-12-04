@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ page import="com.lol.model.Hero"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>Insert title here</title>
+</head>
+
+<body>
+
+	<%
+		Hero hero = (Hero) request.getAttribute("hero");
+	%>
+	<%=hero.getName()%>
+
+	<%=hero.getNickName()%>
+
+	<img src="http://localhost:8080/lol/<%=hero.getImage()%>" />
+
+	<!-- 下面这条伪造的get连接是为了判断是否要转入修改页面。 -->
+	<a
+		href="http://localhost:8080/lol/hero?id=<%=hero.getId()%>&is_change=true">修改</a>
+</body>
+
+</html>
